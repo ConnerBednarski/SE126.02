@@ -1,12 +1,11 @@
-# Row 1 - 5 = $200.00
-# Row 6 - 10 = $175.00
-# Row 11 - 15 = $150.00
-# Available = #
-# Taken = *
+# Conner Bednarski
+# SE126.02
+# Lab 8
 
 #seats = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4']
 #rows = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
 
+#===Functions=======================================================
 def display(aA, bB, cC, dD, eE, fF, gG, hH, iI, jJ, kK, lL, mM, nN, oO, pP, qQ, rR, sS, tT, uU, vV, wW, xX, yY, zZ, row1, row2, row3, row4):
     '''Displays the seat pattern to the user'''
     print("Row                                  Seats                  ")
@@ -38,6 +37,7 @@ def selectSeat():
         
 
     return s
+
 
 def checkSeat(r, s, aA, bB, cC, dD, eE, fF, gG, hH, iI, jJ, kK, lL, mM, nN, oO, pP, qQ, rR, sS, tT, uU, vV, wW, xX, yY, zZ, row1, row2, row3, row4):
     '''Checks to make sure the seat chosen is available'''
@@ -135,25 +135,19 @@ def checkSeat(r, s, aA, bB, cC, dD, eE, fF, gG, hH, iI, jJ, kK, lL, mM, nN, oO, 
         print("That seat is already taken.")
 
 def seatInfo(totalSeats, seatsSold):
-
-    print("Seats Sold: {}".format(seatsSold))
-    print("Seats Available In Theater: {}".format(totalSeats - seatsSold))
+    '''Prints the Seat information'''
+    print("\nSeat Info:\n")
+    print("\tSeats Sold: {}".format(seatsSold))
+    print("\tSeats Available In Theater: {}".format(totalSeats - seatsSold))
 
 def ticketInfo(total, ticketSold):
+    '''Prints the Ticket Infortmation'''
+    print("\nTicket Info:\n")
+    print("\tTickets Sold: {}".format(ticketSold))
+    print("\tTotal Cost: {:.2f}\n".format(total))
 
-    print("Tickets Sold: {}".format(ticketSold))
-    print("Total Cost: {:.2f}".format(total))
-
-def choice(totalSeats, totalCost, seatsSold):
-    '''Asks the user if they want to pick another seat'''
-    view = input("Would you like to see the seat information (Y/N): ").upper()
-    if (view == "Y"):
-        seatInfo(totalSeats, seatsSold)
-
-    view = input("Would you like to see the price of the tickets (Y/N): ").upper()
-    if (view == "Y"):
-        ticketInfo(totalCost, seatsSold)
-
+def choice():
+    '''Asks the user if they want to pick another seat and asks to display ticket/seat information'''
     answer = input("Would you like to choose another seat (Y/N): ").upper()
 
     while (answer != "Y" and answer != "N"):
@@ -162,6 +156,7 @@ def choice(totalSeats, totalCost, seatsSold):
 
     return answer
 
+#===Main Code==========================================================
 a = ['', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
 b = ['', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
 c = ['', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
@@ -206,4 +201,6 @@ while (answer == "Y"):
     seat = selectSeat()
     checkSeat(row,seat,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,one,two,three,four)
     display(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,one,two,three,four)
-    answer = choice(seatTotal, total, sold)
+    seatInfo(seatTotal, sold)
+    ticketInfo(total, sold)
+    answer = choice()
