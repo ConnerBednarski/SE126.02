@@ -25,10 +25,9 @@ with open("C:\\Users\\cbedn\\Desktop\\SE126.02\\Lab 9\\Lab9.csv") as csvfile:
         sort(lastNames, firstNames)
     csvfile.close()
 
-with open("Lab9Write.csv", 'w') as csvfile:
+with open("Lab9Write.csv", 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(lastNames)
-    writer.writerow(firstNames)
+    writer.writerows(zip(lastNames, firstNames))
     csvfile.close()
 
 
