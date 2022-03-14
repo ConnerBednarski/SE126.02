@@ -23,12 +23,12 @@ with open("C:\\Users\\cbedn\\Desktop\\SE126.02\\Lab 9\\Lab9.csv") as csvfile:
         firstNames.append(row[0])
         lastNames.append(row[1])
         sort(lastNames, firstNames)
-    csvfile.close()
+csvfile.close()
 
 with open("Lab9Write.csv", 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(zip(lastNames, firstNames))
-    csvfile.close()
+csvfile.close()
 
 
 
